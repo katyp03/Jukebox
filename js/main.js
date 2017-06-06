@@ -48,18 +48,22 @@ document.addEventListener("DOMContentLoaded", function(){
 	var track2 = new Track("Can't Get No (Satisfaction)", "The Rolling Stones", "NoSatisfaction.mp3");
 
 	function Playlist() {
-		Track.call(this.title);
 		this.elPlaylist = [];
 	}
-	
 
 	Playlist.prototype.addTrack = function( track ){
 		this.track = track;
 		if ( !track instanceof Track ) return false;
 		if ( track instanceof Track ) {
-			this.track.push(track)}
+			this.elPlaylist.push(track)}
 			return true;
 	}
+
+	var newPlaylist = new Playlist ();
+		newPlaylist.addTrack(track1);
+		newPlaylist.addTrack(track2);
+		// can log to console to check that it's correct:
+		// console.log(newPlaylist);
 
 	
 		// title = ["Blackbird", "Can't Get No (Satisfaction)"];
@@ -87,6 +91,13 @@ function playNext(){
 		elAudio.src = "audio/" + elPlaylist[currentSong];
 		elAudio.play();
 };
+
+// to update title and artist per song:
+function updatePage(){
+	elH2 = currentSong.title[track];
+	elH3 = currentSong.artist[track];
+};
+
 });
 
 
