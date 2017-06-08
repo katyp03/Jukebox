@@ -35,3 +35,8 @@ body {
 	text-align: left;
 	font-family: Verdana, Geneva, sans-serif;
 }
+
+i {
+	padding-left: 20px;
+	padding-right: 20px;
+}

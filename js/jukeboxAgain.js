@@ -41,6 +41,12 @@ Jukebox.prototype.next = function(){
 	var currentSong = this.playlist[this.currentTrack];
 	this.el.artist.innerText = currentSong.artist;
  	this.el.title.innerText = currentSong.title;
+	// function togglePause() {
+     if (myAudio.paused && myAudio.currentTime > 0 && !myAudio.ended) {
+         this.el.play.classList.toggle("fa-play");
+     } else {
+         this.el.play.classList.toggle("fa-pause");
+     }
 }
 
 // creating back function to Jukebox constructor:
@@ -56,6 +62,11 @@ Jukebox.prototype.back = function(){
 	var currentSong = this.playlist[this.currentTrack];
 	this.el.artist.innerText = currentSong.artist;
  	this.el.title.innerText = currentSong.title;
+	if (myAudio.paused && myAudio.currentTime > 0 && !myAudio.ended) {
+         this.el.play.classList.toggle("fa-play");
+     } else {
+         this.el.play.classList.toggle("fa-pause");
+     }
 }
 
 Jukebox.prototype.shuffle = function(){
@@ -65,6 +76,11 @@ Jukebox.prototype.shuffle = function(){
 	var currentSong = this.playlist[this.currentTrack];
 	this.el.artist.innerText = currentSong.artist;
  	this.el.title.innerText = currentSong.title;
+	if (myAudio.paused && myAudio.currentTime > 0 && !myAudio.ended) {
+         this.el.play.classList.toggle("fa-play");
+     } else {
+         this.el.play.classList.toggle("fa-pause");
+     }
 }
 
 function Song(file, title, artist) {
@@ -119,6 +135,8 @@ document.addEventListener("DOMContentLoaded",function(){
     player.addSong(new Song("audio/MrJones.mp3","Mr. Jones","Counting Crows"));
     player.addSong(new Song("audio/Home.mp3","Home","Edward Sharpe and the Magnetic Zeros"));
     player.addSong(new Song("audio/DogDays.mp3","Dog Days Are Over","Florence + The Machine"));
+// to play on page load:
+    player.play();
 
 	// create volume slider:
 	elVolume = document.getElementById('volume');
