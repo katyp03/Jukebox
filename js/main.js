@@ -48,10 +48,14 @@ document.addEventListener("DOMContentLoaded", function(){
 	var track2 = new Track("Can't Get No (Satisfaction)", "The Rolling Stones", "NoSatisfaction.mp3");
 
 	function Playlist() {
-		this.elPlaylist = [];
+		this.tracks = [];
+		this.currentTrack = 0;
 	}
 
 	Playlist.prototype.addTrack = function( track ){
+		if (Array.isArray(track) && track.every(t => t instanceof Track)){
+		Array.protoype.push.apply(this.tracks, track);
+		}
 		this.track = track;
 		if ( !track instanceof Track ) return false;
 		if ( track instanceof Track ) {
@@ -65,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		// can log to console to check that it's correct:
 		// console.log(newPlaylist);
 
-	
+	// old (non-object-oriented) way of doing it:
 		// title = ["Blackbird", "Can't Get No (Satisfaction)"];
 		// artist = ["The Beatles", "The Rolling Stones"];
 		// file = [""]
@@ -100,6 +104,26 @@ function updatePage(){
 
 });
 
+Jukebox.prototype.create = function(el, options){
+	var info = document.createElement("div");
+	info.className = "info";
+	info.innerHTML = `
+		<div class="info">
+			<h3 class="name">${options.name || ""}</h3>
+			<div class="track"><span class="artist"></span> &mdash; <span class="song"></span></div>
+		</div>`
+}
+
+
+function Jukebox(){
+
+}
+
+function Track(file, name, artist){
+	this.file = file;
+	this.name = name;
+	this.artist = artist;
+}
 
 // function Player( el ) {
 // 	this.el = el;
@@ -123,6 +147,8 @@ function updatePage(){
 // }
 
 
+
+
 // to go to next track:
 // create array of songs by title
 // function Next to play following sequential track in array
@@ -138,6 +164,8 @@ function updatePage(){
 // };
 // });
 
+
+// container with audio tag, div's with spans for artist and title; below that, containers for buttons (back, pause/play, forward, shuffle)
 
 
 // to allow a user to load one of their own songs:
