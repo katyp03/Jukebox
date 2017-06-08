@@ -80,7 +80,7 @@ Jukebox.prototype.create = function(el, options){
   <div class="info">
   <h3 class="name">${options.name}</h3>
   <div class="track">
-  <span class="artist"></span> &mdash; <span class="title"></span></div>
+  <span class="artist"></span><br /><span class="title"></span></div>
     </div><br />
     <div class="controls">
       	<i id="backward" class="back fa fa-backward"></i>
@@ -115,6 +115,10 @@ document.addEventListener("DOMContentLoaded",function(){
   	player.create(document.getElementById("jukebox"),{name: "Katy's Super Cool Jukebox"});
   	player.addSong(new Song("audio/Blackbird.mp3","Blackbird","The Beatles"));
     player.addSong(new Song("audio/NoSatisfaction.mp3","Can't Get No (Satisfaction)","The Rolling Stones"));
+    player.addSong(new Song("audio/AmericanGirl.mp3","American Girl","Tom Petty & The Heartbreakers"));
+    player.addSong(new Song("audio/MrJones.mp3","Mr. Jones","Counting Crows"));
+    player.addSong(new Song("audio/Home.mp3","Home","Edward Sharpe and the Magnetic Zeros"));
+    player.addSong(new Song("audio/DogDays.mp3","Dog Days Are Over","Florence + The Machine"));
 
 	// create volume slider:
 	elVolume = document.getElementById('volume');
